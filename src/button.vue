@@ -1,11 +1,7 @@
 <template>
   <!-- iconPosition:  icon-left | icon-right -->
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
-    <i class="gicon">
-      <svg class="icon" aria-hidden="true" v-if="icon">
-        <use :xlink:href="`#icon-${icon}`" />
-      </svg>
-    </i>
+    <g-icon :name="icon" v-if="icon"></g-icon>
     <span class="content">
       <slot></slot>
     </span>
