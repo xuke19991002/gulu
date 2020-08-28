@@ -20,12 +20,30 @@
         --border-color: #999;
         --border-color-hover: #666;
       }
+      #app {
+        margin: 20px;
+      }
+      body {
+        font-size: var(--font-size);
+      }
+    </style>
+    <style>
+      .gicon svg {
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+      }
     </style>
   </head>
   <body>
     <div id="app">
-      <g-button></g-button>
+      <g-button icon="setting">测试</g-button>
+      <g-button icon="download" icon-position="left">测试2</g-button>
+      <g-button icon="setting" icon-position="right">测试2</g-button>
     </div>
     <script src="./src/app.js"></script>
+    <script src="//at.alicdn.com/t/font_2034591_p9md7s8drb.js"></script>
   </body>
 </html>
