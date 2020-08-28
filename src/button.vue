@@ -2,6 +2,7 @@
   <!-- iconPosition:  icon-left | icon-right -->
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
     <g-icon :name="icon" v-if="icon"></g-icon>
+    <g-icon class="loading" name="loading" v-if="icon"></g-icon>
     <span class="content">
       <slot></slot>
     </span>
@@ -69,6 +70,14 @@ export default {
     > .content {
       order: 1;
     }
+  }
+  @keyframes loadingCircle {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loading {
+    animation: loadingCircle 1s infinite linear;
   }
 }
 </style>
