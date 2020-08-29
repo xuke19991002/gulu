@@ -4,7 +4,7 @@
   "description": "基于vue2.0编写的UI框架",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx parcel index.html --no-cache"
   },
   "repository": {
     "type": "git",

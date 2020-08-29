@@ -39,8 +39,7 @@
   </head>
   <body>
     <div id="app">
-      <g-button icon="download">测试2</g-button>
-      <g-button icon="setting" icon-position="right">测试2</g-button>
+      <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">点击我</g-button>
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_2034591_7bcmcch3hri.js"></script>

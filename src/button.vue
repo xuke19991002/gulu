@@ -1,8 +1,8 @@
 <template>
   <!-- iconPosition:  icon-left | icon-right -->
-  <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
-    <g-icon :name="icon" v-if="icon"></g-icon>
-    <g-icon class="loading" name="loading" v-if="icon"></g-icon>
+  <button class="g-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+    <g-icon class="gicon" :name="icon" v-if="icon && !loading"></g-icon>
+    <g-icon class="loading gicon" name="loading" v-if="loading"></g-icon>
     <span class="content">
       <slot></slot>
     </span>
@@ -23,6 +23,10 @@ export default {
       validator(val) {
         return val !== 'left' || val !== 'right'
       }
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -46,6 +50,7 @@ export default {
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   &:hover {
     border-color: var(--border-color-hover);
   }
@@ -62,7 +67,7 @@ export default {
   > .content {
     order: 2;
   }
-  &:icon-right {
+  &.icon-right {
     > .gicon {
       margin-left: 5px;
       order: 2;

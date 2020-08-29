@@ -8,6 +8,6 @@ Vue.component('g-icon', Icon)
 new Vue({
   el: '#app',
   data: {
-    msg: 'hello world'
+    loading1: false
   }
 })
