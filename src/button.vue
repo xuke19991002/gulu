@@ -70,6 +70,7 @@ export default {
   &.icon-right {
     > .gicon {
       margin-left: 5px;
+      margin-right: 0;
       order: 2;
     }
     > .content {
