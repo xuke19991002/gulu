@@ -15,8 +15,8 @@ new Vue({
 })
 
 // 单元测试
-import char from 'chai'
-const expect = char.expect
+import chai from 'chai'
+const expect = chai.expect
 
 {
   const Constructor = Vue.extend(Button)
@@ -86,7 +86,12 @@ const expect = char.expect
   vm.$destroy()
 }
 
+// spies 间谍
+// 函数mock 测试行为
+import spies from 'chai-spies'
+chai.use(spies)
 {
+  // 期望函数被执行
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
     propsData: {
@@ -94,10 +99,13 @@ const expect = char.expect
     }
   })
   vm.$mount()
-  vm.$on('click', () => {
-    console.log('handleClick event run is ok')
+
+  const spy = chai.spy(() => {
+    console.log('调用click')
   })
+  vm.$on('click', spy)
   const button = vm.$el
   button.click()
-  // 期望这个函数被执行
+  // 期待当button.click执行之后 间谍已经被调用了
+  expect(spy).to.have.been.called
 }
