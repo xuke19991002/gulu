@@ -40,12 +40,13 @@
   <body>
     <div id="app">
       <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">点击我</g-button>
-
       <g-button-group>
-        <g-button icon="left" :loading="loading1">上一页</g-button>
-        <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">
-          点击我
-        </g-button>
+        <div>
+          <g-button icon="left" :loading="loading1">上一页</g-button>
+          <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">
+            点击我
+          </g-button>
+        </div>
         <g-button icon="right" icon-position="right" :loading="loading1">下一页</g-button>
       </g-button-group>
     </div>

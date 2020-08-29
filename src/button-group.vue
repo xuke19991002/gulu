@@ -8,6 +8,15 @@
 export default {
   data() {
     return {}
+  },
+  mounted() {
+    // 防止button-group嵌套非button组件外的元素造成的样式错乱
+    for (const node of this.$el.children) {
+      const name = node.nodeName.toLowerCase()
+      if (name !== 'button') {
+        console.warn(`g-button-group组件的子元素应该全是g-button，但是你写的是${name}`)
+      }
+    }
   }
 }
 </script>
