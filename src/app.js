@@ -18,7 +18,13 @@ new Vue({
 import chai from 'chai'
 const expect = chai.expect
 
+// spies 间谍
+import spies from 'chai-spies'
+chai.use(spies)
+
+// 使用快进行代码包裹 隔离作用域 防止代码命名冲突 作用域隔离
 {
+  // 测试按钮含有icon
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
     propsData: {
@@ -34,6 +40,7 @@ const expect = chai.expect
 }
 
 {
+  // 测试loading
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
     propsData: {
@@ -50,6 +57,7 @@ const expect = chai.expect
 }
 
 {
+  // 测试icon的位置是否正确
   // 获取元素实际渲染样式需要把dom插入到html中取渲染才可以
   const div = document.createElement('div')
   document.body.appendChild(div)
@@ -68,6 +76,7 @@ const expect = chai.expect
 }
 
 {
+  // 测试icon的位置是否正确
   // 获取元素实际渲染样式需要把dom插入到html中取渲染才可以
   const div = document.createElement('div')
   document.body.appendChild(div)
@@ -86,11 +95,9 @@ const expect = chai.expect
   vm.$destroy()
 }
 
-// spies 间谍
 // 函数mock 测试行为
-import spies from 'chai-spies'
-chai.use(spies)
 {
+  // 测试按钮的点击事件
   // 期望函数被执行
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
@@ -108,4 +115,5 @@ chai.use(spies)
   button.click()
   // 期待当button.click执行之后 间谍已经被调用了
   expect(spy).to.have.been.called
+  vm.$destroy()
 }

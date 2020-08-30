@@ -10,8 +10,12 @@
 </template>
 
 <script>
+import Icon from './icon'
 export default {
   name: 'gButton',
+  components: {
+    gIcon: Icon
+  },
   props: {
     icon: {
       type: String,
