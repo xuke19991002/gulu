@@ -1,5 +1,5 @@
 {
-  "name": "@xuke/gulu",
+  "name": "xk-vue-gulu",
   "version": "0.0.1",
   "description": "基于vue2.0编写的UI框架",
   "main": "index.js",
