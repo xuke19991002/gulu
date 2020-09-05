@@ -1,8 +1,8 @@
 <template>
   <!-- iconPosition:  icon-left | icon-right -->
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
-    <g-icon class="gicon" :name="icon" v-if="icon && !loading"></g-icon>
-    <g-icon class="loading gicon" name="loading" v-if="loading"></g-icon>
+    <g-icon :name="icon" v-if="icon && !loading"></g-icon>
+    <g-icon class="loading" name="loading" v-if="loading"></g-icon>
     <span class="content">
       <slot></slot>
     </span>
@@ -41,7 +41,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .g-button {
   font-size: var(--font-size);
   height: var(--button-height);

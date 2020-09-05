@@ -1,5 +1,5 @@
 <template>
-  <svg aria-hidden="true">
+  <svg aria-hidden="true" class="gicon">
     <use :xlink:href="`#icon-${name}`" />
   </svg>
 </template>
@@ -15,6 +15,12 @@ export default {
   methods: {}
 }
 </script>
-
-<style lang="scss">
+<style lang="scss" scoped>
+.gicon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 </style>

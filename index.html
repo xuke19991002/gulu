@@ -28,25 +28,38 @@
       }
     </style>
     <style>
-      .gicon {
-        width: 1em;
-        height: 1em;
-        /* vertical-align: -0.15em; */
-        fill: currentColor;
-        overflow: hidden;
+      .wrapper {
+        padding: 30px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        margin-bottom: 40px;
+      }
+      .demo-input > div {
+        margin: 10px 0;
       }
     </style>
   </head>
   <body>
     <div id="app">
-      <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">点击我</g-button>
-      <g-button-group>
-        <g-button icon="left" :loading="loading1">上一页</g-button>
+      <div class="wrapper">
         <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">
           点击我
         </g-button>
-        <g-button icon="right" icon-position="right">下一页</g-button>
-      </g-button-group>
+        <g-button-group>
+          <g-button icon="left" :loading="loading1">上一页</g-button>
+          <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">
+            点击我
+          </g-button>
+          <g-button icon="right" icon-position="right">下一页</g-button>
+        </g-button-group>
+      </div>
+
+      <div class="wrapper demo-input">
+        <g-input value="11"></g-input>
+        <g-input disabled value="22"></g-input>
+        <g-input readonly value="33"></g-input>
+        <g-input error="输入错误" value="44"></g-input>
+      </div>
     </div>
     <div id="test"></div>
     <script src="./src/app.js"></script>
