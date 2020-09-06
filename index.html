@@ -42,13 +42,13 @@
   <body>
     <div id="app">
       <div class="wrapper">
-        <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">
+        <g-button icon="download" :loading="loading" @click="loading = !loading">
           点击我
         </g-button>
         <g-button-group>
-          <g-button icon="left" :loading="loading1">上一页</g-button>
-          <g-button icon="download" :loading="loading1" @click="loading1 = !loading1">
-            点击我
+          <g-button icon="left">上一页</g-button>
+          <g-button icon="download">
+            下载
           </g-button>
           <g-button icon="right" icon-position="right">下一页</g-button>
         </g-button-group>
@@ -63,6 +63,5 @@
     </div>
     <div id="test"></div>
     <script src="./src/app.js"></script>
-    <!-- <script src="//at.alicdn.com/t/font_2034591_7bcmcch3hri.js"></script> -->
   </body>
 </html>

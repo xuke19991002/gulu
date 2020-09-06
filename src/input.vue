@@ -1,10 +1,19 @@
 <template>
   <div class="ginput-wrapper" :class="{error}">
-    <input :disabled="disabled" :readonly="readonly" :value="value" type="text" />
+    <input
+      :disabled="disabled"
+      :readonly="readonly"
+      :value="value"
+      type="text"
+      @change="$emit('change', $event.target.value)"
+      @input="$emit('input', $event.target.value)"
+      @blur="$emit('blur', $event.target.value)"
+      @focus="$emit('focus', $event.target.value)"
+    />
 
     <template v-if="error">
       <icon class="icon-error" name="info-circle-fill"></icon>
-      <span class="explain">{{error}}</span>
+      <span class="error-message">{{error}}</span>
     </template>
   </div>
 </template>
@@ -98,7 +107,7 @@ $border-radius: 4px;
     }
     .icon-error {
       color: $error-color;
-      & + .explain {
+      & + .error-message {
         color: $error-color;
       }
     }
