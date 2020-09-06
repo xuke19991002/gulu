@@ -18,10 +18,7 @@ export default {
   computed: {
     colClass() {
       const { span, offset } = this
-      return {
-        [`g-col-${span}`]: span,
-        [`g-col-offset-${offset}`]: offset
-      }
+      return [span && `g-col-${span}`, offset && `g-col-offset-${offset}`]
     },
     colStyle() {
       const { gutter } = this
@@ -40,13 +37,13 @@ export default {
   $class-prefix: g-col-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
-      width: ($n / 24) * 100%;
+      width: $n / 24 * 100%;
     }
   }
   $class-prefix: g-col-offset-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
-      margin-left: ($n / 24) * 100%;
+      margin-left: $n / 24 * 100%;
     }
   }
 }

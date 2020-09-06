@@ -24,8 +24,7 @@ export default {
     this.$children.forEach(vm => {
       vm.gutter = this.gutter || 0
     })
-  },
-  methods: {}
+  }
 }
 </script>
 
