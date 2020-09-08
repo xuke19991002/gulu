@@ -8,12 +8,19 @@
 export default {
   props: {
     gutter: [Number, String],
+    // 横向排列
+    justify: {
+      type: String,
+      validator(value) {
+        return ['start', 'end', 'center', 'space-around', 'space-between'].includes(value)
+      }
+    },
+    // 垂直排列
     align: {
       type: String,
       validator(value) {
-        return ['left', 'right', 'center'].includes(value)
+        return ['top', 'middle', 'bottom'].includes(value)
       }
-      // default: 'left'
     }
   },
   data() {
@@ -27,8 +34,8 @@ export default {
       }
     },
     rowClass() {
-      let { align } = this
-      return [align && `row-${align}`]
+      let { justify, align } = this
+      return [justify && `row-justify-${justify}`, align && `row-align-${align}`]
     }
   },
   mounted() {
@@ -39,17 +46,23 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .row {
   display: flex;
-  &-left {
-    justify-content: flex-start;
+  $justify-position: 'start', 'end', 'center', 'space-around', 'space-between';
+  @for $n from 1 through 4 {
+    &-justify-#{nth($justify-position, $n)} {
+      justify-content: #{nth($justify-position, $n)};
+    }
   }
-  &-right {
-    justify-content: flex-end;
+  &-align-top {
+    align-items: flex-start;
   }
-  &-center {
-    justify-content: center;
+  &-align-middle {
+    align-items: center;
+  }
+  &-align-bottom {
+    align-items: flex-end;
   }
 }
 </style>
