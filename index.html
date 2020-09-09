@@ -4,116 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>轱辘</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      :root {
-        --button-height: 32px;
-        --font-size: 14px;
-        --button-bg: white;
-        --button-active-bg: #eee;
-        --border-radius: 4px;
-        --color: #333;
-        --border-color: #999;
-        --border-color-hover: #666;
-      }
-      #app {
-        margin: 20px;
-      }
-      body {
-        font-size: var(--font-size);
-      }
-      .tips {
-        padding: 10px 20px;
-      }
-    </style>
-    <style>
-      .wrapper {
-        padding: 30px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        border-radius: 5px;
-        margin-bottom: 40px;
-      }
-      .input-demo > div {
-        margin: 10px 0;
-      }
-    </style>
-    <style>
-      .grid-demo > .row {
-        margin-bottom: 16px;
-        background-image: linear-gradient(
-          90deg,
-          #f5f5f5 4.16666667%,
-          transparent 4.16666667%,
-          transparent 8.33333333%,
-          #f5f5f5 8.33333333%,
-          #f5f5f5 12.5%,
-          transparent 12.5%,
-          transparent 16.66666667%,
-          #f5f5f5 16.66666667%,
-          #f5f5f5 20.83333333%,
-          transparent 20.83333333%,
-          transparent 25%,
-          #f5f5f5 25%,
-          #f5f5f5 29.16666667%,
-          transparent 29.16666667%,
-          transparent 33.33333333%,
-          #f5f5f5 33.33333333%,
-          #f5f5f5 37.5%,
-          transparent 37.5%,
-          transparent 41.66666667%,
-          #f5f5f5 41.66666667%,
-          #f5f5f5 45.83333333%,
-          transparent 45.83333333%,
-          transparent 50%,
-          #f5f5f5 50%,
-          #f5f5f5 54.16666667%,
-          transparent 54.16666667%,
-          transparent 58.33333333%,
-          #f5f5f5 58.33333333%,
-          #f5f5f5 62.5%,
-          transparent 62.5%,
-          transparent 66.66666667%,
-          #f5f5f5 66.66666667%,
-          #f5f5f5 70.83333333%,
-          transparent 70.83333333%,
-          transparent 75%,
-          #f5f5f5 75%,
-          #f5f5f5 79.16666667%,
-          transparent 79.16666667%,
-          transparent 83.33333333%,
-          #f5f5f5 83.33333333%,
-          #f5f5f5 87.5%,
-          transparent 87.5%,
-          transparent 91.66666667%,
-          #f5f5f5 91.66666667%,
-          #f5f5f5 95.83333333%,
-          transparent 95.83333333%
-        );
-      }
-      .grid-demo .col {
-        text-align: center;
-        line-height: 2;
-        min-height: 30px;
-        color: #fff;
-        font-size: 18px;
-        background: rgba(0, 160, 233, 0.5);
-      }
-      .grid-demo > .col > div {
-        background: #fff;
-      }
-
-      .gird-demo2 .col {
-        margin: 8px 0;
-      }
-      .gird-demo2 .view {
-        height: 40px;
-        background: pink;
-      }
-    </style>
   </head>
   <body>
     <div id="app">
@@ -224,7 +114,44 @@
         </g-row>
       </div>
 
-      <div class="wrapper"></div>
+      <div class="wrapper layout-demo">
+        <div class="tips">Layout-1</div>
+        <g-layout>
+          <g-header>Header</g-header>
+          <g-content>Content</g-content>
+          <g-footer>Footer</g-footer>
+        </g-layout>
+
+        <div class="tips">Layout-2</div>
+        <g-layout>
+          <g-header>Header</g-header>
+          <g-layout>
+            <g-sider>Sider</g-sider>
+            <g-content>Content</g-content>
+          </g-layout>
+          <g-footer>Footer</g-footer>
+        </g-layout>
+
+        <div class="tips">Layout-3</div>
+        <g-layout>
+          <g-header>Header</g-header>
+          <g-layout>
+            <g-content>Content</g-content>
+            <g-sider>Sider</g-sider>
+          </g-layout>
+          <g-footer>Footer</g-footer>
+        </g-layout>
+
+        <div class="tips">Layout-4</div>
+        <g-layout>
+          <g-sider>Sider</g-sider>
+          <g-layout>
+            <g-header>Header</g-header>
+            <g-content>Content</g-content>
+            <g-footer>Footer</g-footer>
+          </g-layout>
+        </g-layout>
+      </div>
     </div>
 
     <script src="./src/app.js"></script>
