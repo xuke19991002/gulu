@@ -12,7 +12,7 @@ export default {
     justify: {
       type: String,
       validator(value) {
-        return ['start', 'end', 'center', 'space-around', 'space-between'].includes(value)
+        return ['flex-start', 'flex-end', 'center', 'space-around', 'space-between'].includes(value)
       }
     },
     // 垂直排列
@@ -28,9 +28,11 @@ export default {
   },
   computed: {
     rowStyle() {
+      const { gutter } = this
+      if (!gutter) return {}
       return {
-        marginLeft: -this.gutter / 2 + 'px',
-        marginRight: -this.gutter / 2 + 'px'
+        marginLeft: -gutter / 2 + 'px',
+        marginRight: -gutter / 2 + 'px'
       }
     },
     rowClass() {
@@ -49,8 +51,9 @@ export default {
 <style lang="scss">
 .row {
   display: flex;
-  $justify-position: 'start', 'end', 'center', 'space-around', 'space-between';
-  @for $n from 1 through 4 {
+  flex-wrap: wrap;
+  $justify-position: 'flex-start', 'flex-end', 'center', 'space-around', 'space-between';
+  @for $n from 1 through 5 {
     &-justify-#{nth($justify-position, $n)} {
       justify-content: #{nth($justify-position, $n)};
     }

@@ -26,6 +26,9 @@
       body {
         font-size: var(--font-size);
       }
+      .tips {
+        padding: 10px 20px;
+      }
     </style>
     <style>
       .wrapper {
@@ -135,6 +138,8 @@
       </div>
 
       <div class="wrapper grid-demo">
+        <div class="tips">基础布局</div>
+
         <g-row>
           <g-col>1</g-col>
           <g-col>2</g-col>
@@ -144,35 +149,29 @@
           <g-col>2</g-col>
           <g-col>3</g-col>
         </g-row>
-        <g-row>
-          <g-col>1</g-col>
-          <g-col>2</g-col>
-          <g-col>3</g-col>
-          <g-col>4</g-col>
+
+        <div class="tips" tips="分栏间隔">分栏间隔</div>
+
+        <g-row :gutter="20">
+          <g-col :span="2">1</g-col>
+          <g-col :span="4">2</g-col>
+          <g-col :span="6">3</g-col>
+          <g-col :span="8">4</g-col>
         </g-row>
+
+        <div class="tips">分栏偏移</div>
+
         <g-row>
           <g-col :span="2">1</g-col>
           <g-col :offset="4" :span="2">2</g-col>
           <g-col :offset="6" :span="8">10</g-col>
         </g-row>
-        <g-row :gutter="20">
-          <g-col><div>1</div></g-col>
-          <g-col><div>2</div></g-col>
-          <g-col><div>3</div></g-col>
-          <g-col><div>4</div></g-col>
-        </g-row>
       </div>
 
       <div class="wrapper gird-demo2">
-        <g-row>
-          <g-col>
-            <div class="view"></div>
-          </g-col>
-          <g-col>
-            <div class="view"></div>
-          </g-col>
-        </g-row>
-        <g-row :gutter="20" align="middle" justify="center">
+        <div class="tips">对齐方式</div>
+
+        <g-row :gutter="20" align="middle" justify="space-between">
           <g-col :span="3">
             <div class="view">1</div>
           </g-col>
@@ -184,6 +183,43 @@
           </g-col>
           <g-col :span="3" :offset="2">
             <div class="view" style="height: 60px;">4</div>
+          </g-col>
+        </g-row>
+
+        <div class="tips">响应式布局</div>
+
+        <g-row :gutter="20">
+          <g-col
+            span="2"
+            :ipad="{span: 8}"
+            :narrow-pc="{span: 4}"
+            :pc="{span: 2}"
+            :wide-pc="{span: 1}"
+          >
+            <div class="view">2</div>
+          </g-col>
+          <g-col
+            span="22"
+            :ipad="{span: 16}"
+            :narrow-pc="{span: 20}"
+            :pc="{span: 22}"
+            :wide-pc="{span: 23}"
+          >
+            <div class="view">20</div>
+          </g-col>
+        </g-row>
+
+        <div class="tips">响应式布局2</div>
+
+        <g-row :gutter="20">
+          <g-col span="24" :ipad="{span: 12}" :narrow-pc="{span: 8}">
+            <div class="view">1</div>
+          </g-col>
+          <g-col span="24" :ipad="{span: 12}" :narrow-pc="{span: 8}">
+            <div class="view">2</div>
+          </g-col>
+          <g-col span="24" :ipad="{span: 12}" :narrow-pc="{span: 8}">
+            <div class="view">3</div>
           </g-col>
         </g-row>
       </div>
