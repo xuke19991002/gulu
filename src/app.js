@@ -1,5 +1,9 @@
 import './demo.scss'
 import Vue from 'vue'
+import Toast from './plugin'
+
+Vue.use(Toast)
+
 import Button from './button/button.vue'
 import Icon from './icon.vue'
 import ButtonGroup from './button/button-group.vue'
@@ -33,5 +37,9 @@ new Vue({
   data: {
     loading: false
   },
-  methods: {}
+  methods: {
+    handleToast1(){
+      this.$toast('提示内容')
+    }
+  }
 })
