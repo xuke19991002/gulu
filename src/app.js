@@ -1,6 +1,6 @@
 import './demo.scss'
 import Vue from 'vue'
-import Toast from './plugin'
+import Toast from './toast-plugin'
 
 Vue.use(Toast)
 
