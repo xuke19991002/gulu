@@ -41,15 +41,15 @@ new Vue({
     
   },
   methods: {
-    handleToast1(){
+    handleToast(position){
       this.$toast('智商余额不足', {
         enableHtml: true,
-        position: 'top',
-        autoClose: false,
+        position,
+        autoClose: true,
         closeButton: {
           text: '关闭',
           callback(){
-            alert('关闭了')
+            console.log('用户关闭了toast');
           }
         }
       })

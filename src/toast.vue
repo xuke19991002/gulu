@@ -1,13 +1,16 @@
 <template>
-  <div class="toast" :class="toastClasses" ref="toast">
-    <div class="content">
-      <slot v-if="!enableHtml"></slot>
-      <div v-html="$slots.default[0]" v-else></div>
+  <div class="toast-wrapper" :class="toastClasses">
+    <div class="toast" ref="toast">
+      <div class="inner"></div>
+      <div class="content">
+        <slot v-if="!enableHtml"></slot>
+        <div v-html="$slots.default[0]" v-else></div>
+      </div>
+      <template v-if="closeButton">
+        <div class="line" ref="line"></div>
+        <span class="close" @click="handleCloseToast">{{closeButton.text}}</span>
+      </template>
     </div>
-    <template v-if="closeButton">
-      <div class="line" ref="line"></div>
-      <span class="close" @click="handleCloseToast">{{closeButton.text}}</span>
-    </template>
   </div>
 </template>
 
@@ -88,7 +91,7 @@ export default {
 $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.7);
-@keyframes fadeIn {
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -96,31 +99,49 @@ $toast-bg: rgba(0, 0, 0, 0.7);
     opacity: 1;
   }
 }
-@keyframes fadeIn-bottom {
+@keyframes slide-up {
   0% {
     opacity: 0;
     transform: translateY(100%);
   }
   100% {
     opacity: 1;
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
-@keyframes fadeIn-top {
+@keyframes slide-down {
   0% {
     opacity: 0;
     transform: translateY(-100%);
   }
   100% {
     opacity: 1;
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
-.toast {
-  animation: fadeIn 0.3s;
+.toast-wrapper {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  &.position-top {
+    top: 30px;
+    .toast{
+      animation: slide-down 0.3s;
+    }
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  &.position-bottom {
+    bottom: 30px;
+    .toast{
+      animation: slide-up 0.3s;
+    }
+  }
+}
+.toast {
+  animation: fade-in 0.3s;
   font-size: $font-size;
   min-height: $toast-height;
   display: flex;
@@ -130,18 +151,6 @@ $toast-bg: rgba(0, 0, 0, 0.7);
   color: #fff;
   min-width: 96px;
   justify-content: center;
-  &.position-top {
-    animation: fadeIn-top 0.3s;
-    top: 30px;
-  }
-  &.position-middle {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  &.position-bottom {
-    animation: fadeIn-bottom 0.3s;
-    bottom: 30px;
-  }
   .content {
     max-width: 400px;
     text-align: center;

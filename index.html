@@ -155,7 +155,9 @@
 
       <div class="wrapper">
         <div class="tips">Toast 组件</div>
-        <g-button @click="handleToast1">文字提示</g-button></g-button>
+        <g-button @click="handleToast('top')">文字提示 居上</g-button>
+        <g-button @click="handleToast('middle')">文字提示 居中</g-button>
+        <g-button @click="handleToast('bottom')">文字提示 居下</g-button>
       </div>
     </div>
 
