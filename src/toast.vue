@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" :class="toastClasses" ref="toast" >
+  <div class="toast" :class="toastClasses" ref="toast">
     <div class="content">
       <slot v-if="!enableHtml"></slot>
       <div v-html="$slots.default[0]" v-else></div>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: {                    
+  props: {
     autoClose: {
       type: Boolean,
       default: true
@@ -44,9 +44,9 @@ export default {
     }
   },
   computed: {
-    toastClasses(){
+    toastClasses() {
       return {
-        [`position-${this.position}`]: true 
+        [`position-${this.position}`]: true
       }
     }
   },
@@ -71,6 +71,7 @@ export default {
     },
     close() {
       this.$el.remove()
+      this.$emit('close')
       this.$destroy()
     },
     handleCloseToast() {
