@@ -44,7 +44,7 @@ new Vue({
     handleToast1(){
       this.$toast('智商余额不足', {
         enableHtml: true,
-        position: 'bottom',
+        position: 'top',
         autoClose: false,
         closeButton: {
           text: '关闭',

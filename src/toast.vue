@@ -88,7 +88,36 @@ export default {
 $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.7);
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+@keyframes fadeIn-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
 .toast {
+  animation: fadeIn 0.3s;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -101,14 +130,16 @@ $toast-bg: rgba(0, 0, 0, 0.7);
   color: #fff;
   min-width: 96px;
   justify-content: center;
-  &.position-top{
+  &.position-top {
+    animation: fadeIn-top 0.3s;
     top: 30px;
   }
-  &.position-middle{
+  &.position-middle {
     top: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    transform: translateY(-50%);
   }
-  &.position-bottom{
+  &.position-bottom {
+    animation: fadeIn-bottom 0.3s;
     bottom: 30px;
   }
   .content {
