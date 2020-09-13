@@ -38,21 +38,21 @@ new Vue({
     loading: false
   },
   mounted() {
-    this.$toast('网络错误', {
-      // enableHtml: true,
-      position: 'bottom',
-      autoClose: false,
-      closeButton: {
-        text: '关闭',
-        callback(){
-          alert('关闭了')
-        }
-      }
-    })
+    
   },
   methods: {
     handleToast1(){
-      
+      this.$toast('智商余额不足', {
+        enableHtml: true,
+        position: 'bottom',
+        autoClose: false,
+        closeButton: {
+          text: '关闭',
+          callback(){
+            alert('关闭了')
+          }
+        }
+      })
     }
   }
 })
