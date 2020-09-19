@@ -51,7 +51,7 @@ new Vue({
     loading: false,
 
     // tabs
-    selectedTab: '1'
+    selectedTab: '3'
   },
   mounted() {
     

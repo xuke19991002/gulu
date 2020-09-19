@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" :class="{'tabs-item-active': active}" @click="handleClick">
+  <div class="tabs-item" :class="tabsItemClass" @click="handleClick">
     <slot></slot>
   </div>
 </template>
@@ -25,6 +25,14 @@ export default {
       active: false
     }
   },
+  computed: {
+    tabsItemClass() {
+      return {
+        'tabs-item-active': this.active,
+        'tabs-item-disabled': this.disabled
+      }
+    }
+  },
   created() {
     this.eventBus.$on('input', name => {
       this.active = name === this.name
@@ -32,6 +40,7 @@ export default {
   },
   methods: {
     handleClick() {
+      if (this.disabled) return
       this.eventBus.$emit('input', this.name, this)
     }
   }
@@ -49,12 +58,16 @@ export default {
   &:last-child {
     margin-right: 0;
   }
-  &.tabs-item-active{
+  &.tabs-item-active {
     color: #1890ff;
     font-weight: 500;
   }
-  &:hover{
+  &:hover {
     color: #40a9ff;
+  }
+  &.tabs-item-disabled {
+    color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
   }
 }
 </style>

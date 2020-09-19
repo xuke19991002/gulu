@@ -12,16 +12,15 @@
 export default {
   name: 'gTabsHead',
   inject: ['eventBus'],
-  data() {
-    return {}
-  },
-  created(){
+  mounted(){
     this.eventBus.$on('input', (name, vm) => {
-      console.log(vm.$el);
+      const {width, height, top, left} = vm.$el.getBoundingClientRect()
+      this.$refs.line.style.cssText = `
+        width: ${width}px;
+        transform: translate3d(${vm.$el.offsetLeft}px, 0px, 0px);
+      `
     })
-  },
-  mounted() {},
-  methods: {}
+  }
 }
 </script>
 
@@ -44,7 +43,6 @@ export default {
     height: 2px;
     background-color: #1890ff;
     position: absolute;
-    width: 79px;
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
       width 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
       left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
