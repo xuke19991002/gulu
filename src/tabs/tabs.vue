@@ -47,6 +47,10 @@ export default {
     })
   },
   mounted() {
+    // 注意：$children 只能获取到子组件 普通dom元素不行
+    if(this.$children.length === 0){
+      console.warn('tabs组件内容结构错误，请检查写法')
+    }
     // 需要注意 父组件广播事件 需要等待子组件初始化监听函数完毕后父组件再广播事件
     const TabsItems = findComponentsDownward(this, 'gTabsItem')
     TabsItems && TabsItems.forEach(vm => {

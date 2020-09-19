@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" :class="tabsItemClass" @click="handleClick">
+  <div class="tabs-item" :data-name="name" :class="tabsItemClass" @click="handleClick">
     <slot></slot>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
     }
   },
   created() {
-    this.eventBus.$on('input', name => {
+    this.eventBus && this.eventBus.$on('input', name => {
       this.active = name === this.name
     })
   },
