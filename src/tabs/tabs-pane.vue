@@ -1,27 +1,34 @@
 <template>
-  <div class="tabs-pane">
-    <slot>
-      
-    </slot>
+  <div class="tabs-pane" v-if="active">
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
-    return {}
+  name: 'gTabsPane',
+  inject: ['eventBus'],
+  props: {
+    name: {
+      type: [String, Number],
+      required: true
+    }
   },
-  mounted() {
-
+  data() {
+    return {
+      active: false
+    }
   },
-  methods: {
-
-  }
+  created() {
+    this.eventBus.$on('input', name => {
+      this.active = name === this.name
+    })
+  },
+  methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
-.tabs-pane{
-
+.tabs-pane {
 }
 </style>

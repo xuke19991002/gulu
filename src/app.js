@@ -70,6 +70,9 @@ new Vue({
           }
         }
       })
+    },
+    tabsClick(name){
+      this.$toast(name)
     }
   }
 })
