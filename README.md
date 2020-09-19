@@ -26,7 +26,6 @@
     --border-color-hover: #666;
   }
   ```
-  IE 15 及以上浏览器都支持该样式
 
 2. 安装 xk-vue-gulu
   ```
