@@ -55,7 +55,10 @@ new Vue({
     loading: false,
 
     // tabs
-    selectedTab: '3'
+    selectedTab: '3',
+
+    // popover
+    isShowPopover: false
   },
   mounted() {
     
@@ -75,6 +78,7 @@ new Vue({
         }
       })
     },
+    // tabs
     tabsClick(name){
       this.$toast(name)
     }

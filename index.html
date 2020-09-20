@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="app">
-      <div class="wrapper">
+      <!-- <div class="wrapper">
         <g-button icon="download" :loading="loading" @click="loading = !loading">
           点击我
         </g-button>
@@ -184,16 +184,24 @@
             <g-tabs-pane name="4">设置</g-tabs-pane>
           </g-tabs-body>
         </g-tabs>
-      </div>
+      </div> -->
 
       <div class="wrapper">
         <div class="tips">Popover 组件</div>
-        <g-popover>
-          <template slot="content">
-            <div>这是一段popover内部文本</div>
-          </template>
-          <g-button>点我</g-button>
-        </g-popover>
+        <div style="padding: 30px; background-color: pink;" >
+          <g-popover v-model="isShowPopover">
+            <template slot="content">
+              <g-button>关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭</g-button>
+            </template>
+            <g-button>点我</g-button>
+          </g-popover>
+          <g-popover v-model="isShowPopover">
+            <template slot="content">
+              <g-button>关闭</g-button>
+            </template>
+            <g-button>点我</g-button>
+          </g-popover>
+        </div>
       </div>
     </div>
 
