@@ -189,17 +189,29 @@
       <div class="wrapper">
         <div class="tips">Popover 组件</div>
         <div style="padding: 30px; background-color: pink;" >
-          <g-popover v-model="isShowPopover">
+          <g-popover>
             <template slot="content">
-              <g-button>关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭关闭</g-button>
+              顶部弹出内容
             </template>
-            <g-button>点我</g-button>
+            <g-button>点我顶部弹出</g-button>
           </g-popover>
-          <g-popover v-model="isShowPopover">
+          <g-popover position="bottom">
             <template slot="content">
-              <g-button>关闭</g-button>
+              <g-button>底部弹出内容</g-button>
             </template>
-            <g-button>点我</g-button>
+            <g-button>点我底部弹出</g-button>
+          </g-popover>
+          <g-popover position="left">
+            <template slot="content">
+              <g-button>左侧弹出内容</g-button>
+            </template>
+            <g-button>点我左侧弹出</g-button>
+          </g-popover>
+          <g-popover position="right">
+            <template slot="content">
+              <g-button>右侧弹出内容</g-button>
+            </template>
+            <g-button>点我右侧弹出</g-button>
           </g-popover>
         </div>
       </div>
