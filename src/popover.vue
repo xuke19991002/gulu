@@ -1,5 +1,6 @@
 <template>
-  <div class="popover" @click.stop="handlePopoverClick">
+  <!-- <div class="popover" @click.stop="handlePopoverClick"> -->
+  <div class="popover" ref="popover">
     <div
       ref="contentWrapper"
       class="popover-content-wrapper"
@@ -27,6 +28,13 @@ export default {
       validator(value) {
         return ['top', 'bottom', 'left', 'right'].includes(value)
       }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value){
+        return value === 'click' || value === 'hover'
+      }
     }
   },
   data() {
@@ -37,6 +45,14 @@ export default {
   computed: {
     contentWrapperClass() {
       return [`content-position-${this.position}`]
+    }
+  },
+  mounted() {
+    if(this.trigger === 'click'){
+      this.$refs.popover.addEventListener('click', this.handlePopoverClick)
+    } else {
+      this.$refs.popover.addEventListener('mouseenter', this.open)
+      this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
   methods: {
@@ -67,7 +83,7 @@ export default {
       contentWrapper.style.top = popoverPositionDescription[this.position].top + 'px'
 
     },
-    handlePopoverClick() {
+    handlePopoverClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
         if (!this.visible) {
           this.open()
@@ -83,6 +99,7 @@ export default {
           event.target !== this.$refs.contentWrapper &&
           !this.$refs.triggerWrapper.contains(event.target)
         ) {
+          console.log('cb 关闭');
           this.close()
         }
       }
@@ -101,14 +118,12 @@ export default {
     close() {
       this.visible = false
       document.removeEventListener('click', this.eventListenerCb)
+    },
+    destroyed() {
+      this.$refs.popover.removeEventListener('click', this.handlePopoverClick)
+      this.$refs.popover.removeEventListener('mouseenter', this.open)
+      this.$refs.popover.removeEventListener('mouseleave', this.close)
     }
-    /* 
-      未实现功能：
-        1：多种事件支持 比如 hover 上去
-        2：css的一个问题 如果popover外层元素存在overflow:hidden 会存在popover展示区域无法正常显示的问题
-          这也是为啥比较出名的UI库多倾向于直接把popover直接挂载到body上
-        3：当用户给popover外层元素绑定点击事件时 此事件不会被执行 因为内部元素的click被阻止冒泡 导致当前绑定的事件无法被触发
-    */
   }
 }
 </script>
