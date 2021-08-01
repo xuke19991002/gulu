@@ -5,12 +5,26 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   name: 'collapse',
+  props: {
+    single: {
+      type: Boolean,
+      default: false
+    }
+  },
+  provide() {
+    return {
+      eventBus: this.single ? this.eventBus : null
+    }
+  },
   data() {
     return {
+      eventBus: new Vue()
     }
-  }
+  },
+  methods: {}
 }
 </script>
 

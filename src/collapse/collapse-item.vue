@@ -1,6 +1,6 @@
 <template>
   <div class="collapseItem">
-    <div class="title" @click="open = !open">
+    <div class="title" @click="handleChange">
       {{ title }}
     </div>
     <div class="content" v-if="open">
@@ -18,9 +18,31 @@ export default {
       required: true
     }
   },
+  inject: ['eventBus'],
   data() {
     return {
       open: false
+    }
+  },
+  mounted() {
+    this.eventBus && this.eventBus.$on('update:selected', vm => {
+      if (vm !== this) {
+        this.close()
+      }
+    })
+  },
+  methods: {
+    handleChange() {
+      const state = this.open
+      if (state) {
+        this.open = false
+      } else {
+        this.open = true
+        this.eventBus && this.eventBus.$emit('update:selected', this)
+      }
+    },
+    close() {
+      this.open = false
     }
   }
 }
