@@ -12,19 +12,40 @@ export default {
     single: {
       type: Boolean,
       default: false
+    },
+    selected: {
+      type: Array,
+      default: () => []
     }
   },
   provide() {
     return {
-      eventBus: this.single ? this.eventBus : null
+      eventBus: this.eventBus,
+      single: this.single,
+      selected: this.selected
     }
   },
   data() {
     return {
-      eventBus: new Vue()
+      eventBus: new Vue(),
+      selectedList: this.selected
     }
   },
-  methods: {}
+  mounted() {
+    this.eventBus.$on('change', (name, visible) => {
+      if (this.selectedList.length === 0) {
+        this.selectedList.push(name)
+      } else {
+        const index = this.selectedList.findIndex(v => v === name)
+        if (visible) {
+          this.selectedList.push(name)
+        } else {
+          this.selectedList.splice(index, 1)
+        }
+      }
+      this.$emit('change', this.selectedList)
+    })
+  }
 }
 </script>
 

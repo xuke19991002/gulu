@@ -188,7 +188,7 @@
 
       <div class="wrapper">
         <div class="tips">Popover 组件</div>
-        <div style="padding: 10px 0;" >
+        <div style="padding: 10px 0;">
           <g-popover>
             <template slot="content">
               顶部弹出内容
@@ -242,13 +242,15 @@
           </g-popover>
         </div>
       </div>
-    
+
       <div class="wrapper">
         <div class="tips">Collapse 折叠面板</div>
-        <g-collapse selected="2">
-          <g-collapse-item name="1" title="标题-1">
-            1的内容
-          </g-collapse-item>
+        <g-collapse @change="collapseChange">
+          <g-layout>
+            <g-collapse-item name="1" title="标题-1">
+              1的内容
+            </g-collapse-item>
+          </g-layout>
           <g-collapse-item name="2" title="标题-2">
             2的内容
           </g-collapse-item>
