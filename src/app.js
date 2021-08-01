@@ -69,27 +69,28 @@ new Vue({
     // popover
     isShowPopover: false
   },
-  mounted() {
-    
-  },
+  mounted() {},
   methods: {
     // toast
-    handleToast(position){
+    handleToast(position) {
       this.$toast('智商余额不足', {
         enableHtml: true,
         position,
         autoClose: true,
         closeButton: {
           text: '关闭',
-          callback(){
-            console.log('用户关闭了toast');
+          callback() {
+            console.log('用户关闭了toast')
           }
         }
       })
     },
     // tabs
-    tabsClick(name){
+    tabsClick(name) {
       this.$toast(name)
+    },
+    collapseChange(name) {
+      console.log(name)
     }
   }
 })
