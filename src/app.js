@@ -5,8 +5,9 @@ import Toast from './toast-plugin'
 Vue.use(Toast)
 
 import Button from './button/button.vue'
-import Icon from './icon.vue'
 import ButtonGroup from './button/button-group.vue'
+
+import Icon from './icon.vue'
 
 import Input from './input.vue'
 
@@ -27,10 +28,15 @@ import TabsPane from './tabs/tabs-pane.vue'
 
 import Popover from './popover.vue'
 
+import Collapse from './collapse/collapse.vue'
+import CollapseItem from './collapse/collapse-item.vue'
+
 Vue.component('g-button', Button)
-Vue.component('g-icon', Icon)
 Vue.component('g-button-group', ButtonGroup)
+
+Vue.component('g-icon', Icon)
 Vue.component('g-input', Input)
+
 Vue.component('g-row', Row)
 Vue.component('g-col', Col)
 
@@ -47,6 +53,9 @@ Vue.component('g-tabs-item', TabsItem)
 Vue.component('g-tabs-pane', TabsPane)
 
 Vue.component('g-popover', Popover)
+
+Vue.component('g-collapse', Collapse)
+Vue.component('g-collapse-item', CollapseItem)
 
 new Vue({
   el: '#app',

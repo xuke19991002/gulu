@@ -27,3 +27,17 @@ export const offset = (curEle) => {
     left: curLeft
   }
 }
+
+// 由一个组件，找到指定组件的兄弟组件 exceptMe 是否排除自身
+export const findBrothersComponents = (
+  context,
+  componentName,
+  exceptMe = true
+) => {
+  let res = context.$parent.$children.filter(
+    item => item.$options.name === componentName
+  )
+  let index = res.findIndex(item => item._uid === context._uid)
+  if (exceptMe && index > -1) res.splice(index, 1)
+  return res
+}
